@@ -1,0 +1,13 @@
+{
+  "name": "treino-fisio-coluna",
+  "version": "1.0.0",
+  "description": "Guia Fisioterapêutico de Treino para Hérnia de Disco",
+  "scripts": {
+    "dev": "npx -y serve .",
+    "build": "echo 'Static build complete'",
+    "start": "npx -y serve ."
+  },
+  "keywords": ["treino", "fisioterapia", "hernia-de-disco"],
+  "author": "",
+  "license": "ISC"
+}

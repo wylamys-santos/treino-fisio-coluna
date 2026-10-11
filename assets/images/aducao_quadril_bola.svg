@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="adductorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="ballGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+    <filter id="glow6" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" rx="20" fill="url(#bgGrad6)"/>
+  
+  <!-- Floor / Mat Reference -->
+  <line x1="50" y1="480" x2="750" y2="480" stroke="#334155" stroke-width="3" stroke-dasharray="6,6"/>
+  <rect x="100" y="475" width="600" height="12" rx="6" fill="#6366f1" opacity="0.3"/>
+  <text x="400" y="510" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="13" text-anchor="middle">Colchonete - Posição Deitada de Costas (ou Sentado na Máquina Adutora)</text>
+
+  <!-- Title Badge -->
+  <rect x="40" y="30" width="455" height="44" rx="10" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="55" y="58" fill="#e0e7ff" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="700">ADUÇÃO DE QUADRIL COM BOLA / ADUTORA</text>
+
+  <!-- Target Muscle Tag -->
+  <rect x="515" y="30" width="245" height="44" rx="10" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+  <text x="637" y="58" fill="#e0e7ff" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" font-weight="600" text-anchor="middle">🎯 Foco: Músculos Adutores</text>
+
+  <!-- Anatomy Adductor Highlight Box (Perfeita quebra de linha sem estourar limites) -->
+  <rect x="420" y="95" width="340" height="88" rx="10" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+  <text x="438" y="122" fill="#c7d2fe" font-family="system-ui, -apple-system, sans-serif" font-size="13.5" font-weight="700">⚡ Função Estabilizadora Pélvica:</text>
+  <text x="438" y="145" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">Os adutores fecham a cadeia anterior do quadril,</text>
+  <text x="438" y="165" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">atuando com o core para blindar a coluna.</text>
+
+  <!-- Alternative Exercise (Cadeira Adutora) Badge -->
+  <rect x="40" y="105" width="340" height="68" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="58" y="132" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Alternativa: Cadeira Adutora</text>
+  <text x="58" y="154" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">Se fizer na máquina, encoste as costas no banco!</text>
+
+  <!-- Biomechanical Figure - Supine View with Knees Bent Squeezing Ball -->
+  <!-- Head & Torso flat on the mat -->
+  <circle cx="160" cy="430" r="26" fill="#94a3b8"/>
+  <path d="M 180 440 L 360 440" stroke="#475569" stroke-width="38" stroke-linecap="round"/>
+  <!-- Hands relaxed alongside hips -->
+  <path d="M 220 455 L 320 465" stroke="#64748b" stroke-width="14" stroke-linecap="round"/>
+
+  <!-- Lumbar Spine completely flat / supported (Zero strain) -->
+  <line x1="180" y1="420" x2="360" y2="420" stroke="#10b981" stroke-width="4" stroke-dasharray="6,4" filter="url(#glow6)"/>
+  <rect x="180" y="350" width="160" height="38" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="260" y="374" fill="#6ee7b7" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Lombar 100% no Chão</text>
+
+  <!-- Pelvis -->
+  <ellipse cx="370" cy="435" rx="36" ry="26" fill="#334155"/>
+
+  <!-- Left Thigh & Right Thigh angled inward squeezing the ball -->
+  <!-- Top Thigh Contour -->
+  <path d="M 370 425 L 480 320" stroke="url(#adductorGrad)" stroke-width="32" stroke-linecap="round" filter="url(#glow6)"/>
+  <!-- Bottom Thigh Contour -->
+  <path d="M 370 445 L 490 390" stroke="url(#adductorGrad)" stroke-width="30" stroke-linecap="round"/>
+
+  <!-- Pilates Ball / Cushion (Squeezed between knees) -->
+  <ellipse cx="485" cy="355" rx="38" ry="34" fill="url(#ballGrad)" filter="url(#glow6)"/>
+  <text x="485" y="353" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800" text-anchor="middle">BOLA</text>
+  <text x="485" y="369" fill="#fdf2f8" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" text-anchor="middle">PILATES</text>
+
+  <!-- Squeeze Force Inward Arrows -->
+  <g transform="translate(485, 290)">
+    <line x1="0" y1="0" x2="0" y2="25" stroke="#f43f5e" stroke-width="5" stroke-linecap="round"/>
+    <polygon points="-7,20 7,20 0,30" fill="#f43f5e"/>
+    <text x="15" y="16" fill="#fb7185" font-family="system-ui, -apple-system, sans-serif" font-size="12.5" font-weight="700">Aperto (3 a 5 seg)</text>
+  </g>
+  <g transform="translate(485, 420)">
+    <line x1="0" y1="0" x2="0" y2="-25" stroke="#f43f5e" stroke-width="5" stroke-linecap="round"/>
+    <polygon points="-7,-20 7,-20 0,-30" fill="#f43f5e"/>
+  </g>
+
+  <!-- Shins down to feet -->
+  <path d="M 480 320 L 580 450" stroke="#64748b" stroke-width="22" stroke-linecap="round"/>
+  <path d="M 490 390 L 590 460" stroke="#475569" stroke-width="20" stroke-linecap="round"/>
+  
+  <!-- Feet planted flat on floor -->
+  <path d="M 570 465 L 630 465 L 620 450 L 580 450 Z" fill="#94a3b8"/>
+
+  <!-- Bottom Technical Checklist (2 Linhas elegantes e enquadradas) -->
+  <rect x="40" y="528" width="720" height="54" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="56" y="551" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="12.5" font-weight="700">
+    ⏱️ Tempo sob Tensão: <tspan fill="#cbd5e1" font-weight="400">Aperte com 70-80% de força máxima, segurando 3 a 5 segundos.</tspan>
+  </text>
+  <text x="56" y="571" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
+    Mantenha respiração contínua (sem prender o ar) e relaxe levemente antes da próxima repetição.
+  </text>
+</svg>

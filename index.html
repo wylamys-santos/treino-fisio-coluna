@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Guia Fisioterapêutico Ilustrado de Musculação para Hérnia de Disco Lombar. Exercícios seguros, fotos reais, sem carga axial e com cards minimizáveis.">
+  <meta name="theme-color" content="#0a0f1d">
+  <title>Coluna Forte & Segura | Treino para Hérnia de Disco</title>
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ====================================================================
+         HEADER
+         ==================================================================== -->
+    <header class="app-header">
+      <div class="header-top-row">
+        <div class="header-branding">
+          <div class="brand-icon" aria-hidden="true">🛡️</div>
+          <div class="brand-text">
+            <h1>Coluna Forte &amp; Segura</h1>
+            <span class="brand-badge">Protocolo Fisioterapêutico • Hérnia de Disco</span>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button id="btn-theme-toggle" class="btn-icon-action" title="Alternar Modo Escuro / Claro">
+            <span id="theme-icon">☀️</span> <span class="action-text">Tema</span>
+          </button>
+          <button id="btn-print-pdf" class="btn-primary-action" title="Exportar ou Imprimir em PDF">
+            <span>📄</span> Imprimir / PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Protocolo Clínico de Restrições (Avisos Mandatórios da Fisio) -->
+      <div class="safety-banner" role="alert">
+        <div class="safety-icon" aria-hidden="true">⚠️</div>
+        <div class="safety-content">
+          <h3>Diretriz da Fisioterapeuta: Proteção da Coluna Lombar</h3>
+          <p style="font-size: 0.82rem; color: var(--text-secondary);">
+            Evitar compressão discal e cisalhamento nos discos L4-L5 e S1 durante toda a sessão.
+          </p>
+          <div class="safety-pills">
+            <span class="pill-danger">🚫 Proibido Smith</span>
+            <span class="pill-danger">🚫 Proibido Leg Press</span>
+            <span class="pill-danger">🚫 Zero Carga Axial (Sem Barra nas Costas)</span>
+            <span class="pill-danger">🚫 Sem Afundo</span>
+            <span class="pill-safe">✓ Treino Livre &amp; Apoio Total</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Progresso e Métricas da Sessão -->
+      <div class="workout-stats-bar">
+        <div class="progress-info">
+          <div class="progress-labels">
+            <span>Progresso de Hoje</span>
+            <span id="progress-percent-text">0 de 9 concluídos (0%)</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+        <div>
+          <button id="btn-reset-session" class="btn-reset-workout" title="Desmarcar todas as séries para um novo treino">
+            🔄 Reiniciar Dia
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         CONTROLES: FILTROS + EXPANDIR / RECOLHER TODOS (RESPONSIVIDADE PRIME)
+         ==================================================================== -->
+    <!-- ====================================================================
+         CONTROLES: FILTROS + EXPANDIR / RECOLHER TODOS (RESPONSIVIDADE PRIME)
+         ==================================================================== -->
+    <div class="controls-master-row">
+      <div class="tabs-scroll-wrapper">
+        <nav class="category-tabs" aria-label="Filtrar por grupo muscular">
+          <button class="tab-btn active" data-category="all" id="tab-all">
+            <span>🏋️ Todos</span>
+            <span class="tab-badge">9</span>
+          </button>
+          <button class="tab-btn" data-category="core" id="tab-core">
+            <span>🟢 Core</span>
+            <span class="tab-badge">3</span>
+          </button>
+          <button class="tab-btn" data-category="glute" id="tab-glute">
+            <span>🟣 Glúteos</span>
+            <span class="tab-badge">3</span>
+          </button>
+          <button class="tab-btn" data-category="quad" id="tab-quad">
+            <span>🔵 Quadríceps</span>
+            <span class="tab-badge">3</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Barra de Ações Rápidas (Modo Compacto / Modo Foco para Celular) -->
+      <div class="quick-view-actions">
+        <div class="accordion-global-toggles">
+          <button id="btn-collapse-all" class="btn-accordion-all" title="Recolher todos os cards para economizar espaço e navegar rápido no celular">
+            <span>📂</span> Recolher Todos
+          </button>
+          <button id="btn-expand-all" class="btn-accordion-all" title="Expandir todos os cards">
+            <span>📖</span> Expandir Todos
+          </button>
+        </div>
+        <button id="btn-focus-mode" class="btn-focus-toggle" title="Modo Foco: Mantém aberto apenas o exercício que você estiver fazendo, recolhendo os demais">
+          <span class="focus-icon">⚡</span> <span class="focus-text">Modo Foco: <strong id="focus-mode-status">1 por vez</strong></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         GRID DOS EXERCÍCIOS COM CARDS RETRÁTEIS
+         ==================================================================== -->
+    <main class="exercise-grid" id="exercise-grid">
+
+      <!-- EXERCÍCIO 1: PRANCHA FRONTAL -->
+      <article class="exercise-card" data-category="core" id="card-prancha">
+        <!-- Header fixo para minimizar/expandir -->
+        <div class="card-header-bar" title="Clique para minimizar ou expandir este exercício">
+          <div class="card-header-main">
+            <span class="card-number-badge">1</span>
+            <span class="card-tag-pill cat-tag-core">Core</span>
+            <span class="card-header-title">Prancha Frontal Isométrica</span>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-mini-status" id="ministatus-prancha">0/3 S</span>
+            <button class="btn-card-collapse-toggle" aria-label="Minimizar ou expandir">▲</button>
+          </div>
+        </div>
+
+        <!-- Conteúdo Retrátil -->
+        <div class="card-collapsible-wrapper">
+          <div class="card-collapsible-inner">
+            <div class="card-image-wrapper" onclick="handleCardImageClick(this)">
+              <span class="card-category-badge cat-core">Aquecimento &amp; Core</span>
+              <img src="assets/images/prancha_frontal.jpg" alt="Postura correta da Prancha Frontal Isométrica" loading="lazy">
+              <div class="image-zoom-hint">🔍 Ampliar</div>
+            </div>
+
+            <div class="card-body">
+              <h2 class="card-title">Prancha Frontal Isométrica</h2>
+              <div class="card-focus-target">
+                <span>🎯</span> <strong>Alvo:</strong> Transverso abdominal e estabilização lombar
+              </div>
+
+              <div class="prescription-pill-row">
+                <span class="rx-pill">⏱️ 3 Séries</span>
+                <span class="rx-pill">⏳ 20 a 30s</span>
+                <span class="rx-pill">🛡️ Isometria Neutra</span>
+              </div>
+
+              <div class="sets-tracker-box">
+                <div class="sets-header">
+                  <span>Marcar Séries Concluídas:</span>
+                  <span class="sets-counter-label" id="label-prancha">0/3</span>
+                </div>
+                <div class="sets-buttons-group" data-exercise="prancha" data-total-sets="3">
+                  <button class="set-btn" data-set="1">S1</button>
+                  <button class="set-btn" data-set="2">S2</button>
+                  <button class="set-btn" data-set="3">S3</button>
+                </div>
+              </div>
+
+              <div class="instructions-details">
+                <div class="step-item">
+                  <span class="step-label">📍 Posição:</span>
+                  Deitado de barriga para baixo, apoie os antebraços e pontas dos pés no chão. Cotovelos sob os ombros.
+                </div>
+                <div class="step-item">
+                  <span class="step-label">⚡ Execução:</span>
+                  Eleve o quadril formando uma linha reta dos ombros aos calcanhares. Puxe o umbigo para dentro e aperte os glúteos.
+                </div>
+                <div class="clinical-caution-box">
+                  ⚠️ <strong>Cuidado com a Hérnia:</strong> Não deixe a bacia cair em direção ao chão. Se cansar antes dos 30s, desça com controle.
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-timer-row">
+                  <button class="btn-card-timer" onclick="startTimer(30, 'Prancha Frontal')">
+                  ⏱️ Cronometrar 30s
+                </button>
+                <button class="btn-card-timer" onclick="startTimer(45, 'Descanso')">
+                  ⏳ Descanso 45s
+                </button>
+                </div>
+                <button type="button" class="btn-card-close-bottom" onclick="toggleCard(this.closest('.exercise-card'))">
+                  <span>▲</span> Fechar / Minimizar Card
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EXERCÍCIO 2: PERDIGUEIRO (BIRD-DOG) -->
+      <article class="exercise-card" data-category="core" id="card-perdigueiro">
+        <div class="card-header-bar" title="Clique para minimizar ou expandir este exercício">
+          <div class="card-header-main">
+            <span class="card-number-badge">2</span>
+            <span class="card-tag-pill cat-tag-core">Core</span>
+            <span class="card-header-title">Perdigueiro (Bird-Dog)</span>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-mini-status" id="ministatus-perdigueiro">0/3 S</span>
+            <button class="btn-card-collapse-toggle" aria-label="Minimizar ou expandir">▲</button>
+          </div>
+        </div>
+
+        <div class="card-collapsible-wrapper">
+          <div class="card-collapsible-inner">
+            <div class="card-image-wrapper" onclick="handleCardImageClick(this)">
+              <span class="card-category-badge cat-core">Aquecimento &amp; Core</span>
+              <img src="assets/images/bird_dog.jpg" alt="Exercício Perdigueiro Bird-Dog com alinhamento horizontal" loading="lazy">
+              <div class="image-zoom-hint">🔍 Ampliar</div>
+            </div>
+
+            <div class="card-body">
+              <h2 class="card-title">Perdigueiro (Bird-Dog)</h2>
+              <div class="card-focus-target">
+                <span>🎯</span> <strong>Alvo:</strong> Cadeia cruzada posterior, paravertebrais e glúteo
+              </div>
+
+              <div class="prescription-pill-row">
+                <span class="rx-pill">🔁 3 Séries</span>
+                <span class="rx-pill">🔢 10-12 / lado</span>
+                <span class="rx-pill">🛡️ Padrão McGill</span>
+              </div>
+
+              <div class="sets-tracker-box">
+                <div class="sets-header">
+                  <span>Marcar Séries Concluídas:</span>
+                  <span class="sets-counter-label" id="label-perdigueiro">0/3</span>
+                </div>
+                <div class="sets-buttons-group" data-exercise="perdigueiro" data-total-sets="3">
+                  <button class="set-btn" data-set="1">S1</button>
+                  <button class="set-btn" data-set="2">S2</button>
+                  <button class="set-btn" data-set="3">S3</button>
+                </div>
+              </div>
+
+              <div class="instructions-details">
+                <div class="step-item">
+                  <span class="step-label">📍 Posição:</span>
+                  Em 4 apoios no colchonete. Mãos abaixo dos ombros e joelhos abaixo do quadril.
+                </div>
+                <div class="step-item">
+                  <span class="step-label">⚡ Execução:</span>
+                  Estenda braço direito e perna esquerda simultaneamente paralelos ao chão. Pause 1s e alterne.
+                </div>
+                <div class="clinical-caution-box">
+                  ⚠️ <strong>Cuidado com a Hérnia:</strong> Não eleve a perna acima da linha do corpo nem gire a bacia.
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-timer-row">
+                  <button class="btn-card-timer" onclick="startTimer(45, 'Descanso')">
+                  ⏳ Descanso 45s
+                </button>
+                </div>
+                <button type="button" class="btn-card-close-bottom" onclick="toggleCard(this.closest('.exercise-card'))">
+                  <span>▲</span> Fechar / Minimizar Card
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EXERCÍCIO 3: PALLOF PRESS -->
+      <article class="exercise-card" data-category="core" id="card-pallof">
+        <div class="card-header-bar" title="Clique para minimizar ou expandir este exercício">
+          <div class="card-header-main">
+            <span class="card-number-badge">3</span>
+            <span class="card-tag-pill cat-tag-core">Core</span>
+            <span class="card-header-title">Pallof Press com Cabo</span>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-mini-status" id="ministatus-pallof">0/3 S</span>
+            <button class="btn-card-collapse-toggle" aria-label="Minimizar ou expandir">▲</button>
+          </div>
+        </div>
+
+        <div class="card-collapsible-wrapper">
+          <div class="card-collapsible-inner">
+            <div class="card-image-wrapper" onclick="handleCardImageClick(this)">
+              <span class="card-category-badge cat-core">Aquecimento &amp; Core</span>
+              <img src="assets/images/pallof_press.jpg" alt="Exercício Pallof Press demonstrando anti-rotação" loading="lazy">
+              <div class="image-zoom-hint">🔍 Ampliar</div>
+            </div>
+
+            <div class="card-body">
+              <h2 class="card-title">Pallof Press com Elástico ou Cabo</h2>
+              <div class="card-focus-target">
+                <span>🎯</span> <strong>Alvo:</strong> Oblíquos e estabilizadores anti-rotacionais
+              </div>
+
+              <div class="prescription-pill-row">
+                <span class="rx-pill">🔁 3 Séries</span>
+                <span class="rx-pill">🔢 10-12 / lado</span>
+                <span class="rx-pill">🛡️ Anti-Rotação</span>
+              </div>
+
+              <div class="sets-tracker-box">
+                <div class="sets-header">
+                  <span>Marcar Séries Concluídas:</span>
+                  <span class="sets-counter-label" id="label-pallof">0/3</span>
+                </div>
+                <div class="sets-buttons-group" data-exercise="pallof" data-total-sets="3">
+                  <button class="set-btn" data-set="1">S1</button>
+                  <button class="set-btn" data-set="2">S2</button>
+                  <button class="set-btn" data-set="3">S3</button>
+                </div>
+              </div>
+
+              <div class="instructions-details">
+                <div class="step-item">
+                  <span class="step-label">📍 Posição:</span>
+                  Em pé de lado para a polia ou elástico. Joelhos destravados, segurando o puxador junto ao peito.
+                </div>
+                <div class="step-item">
+                  <span class="step-label">⚡ Execução:</span>
+                  Empurre as mãos em linha reta à frente. Segure 1 a 2s resistindo à rotação e volte.
+                </div>
+                <div class="clinical-caution-box">
+                  ⚠️ <strong>Cuidado com a Hérnia:</strong> A rotação com carga machuca os discos. Seu objetivo é NÃO deixar o tronco girar!
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-timer-row">
+                  <button class="btn-card-timer" onclick="startTimer(60, 'Descanso Pallof')">
+                  ⏳ Descanso 60s
+                </button>
+                </div>
+                <button type="button" class="btn-card-close-bottom" onclick="toggleCard(this.closest('.exercise-card'))">
+                  <span>▲</span> Fechar / Minimizar Card
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EXERCÍCIO 4: ELEVAÇÃO PÉLVICA NO CHÃO -->
+      <article class="exercise-card" data-category="glute" id="card-elevacao">
+        <div class="card-header-bar" title="Clique para minimizar ou expandir este exercício">
+          <div class="card-header-main">
+            <span class="card-number-badge">4</span>
+            <span class="card-tag-pill cat-tag-glute">Glúteo</span>
+            <span class="card-header-title">Elevação Pélvica no Chão (Ponte)</span>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-mini-status" id="ministatus-elevacao">0/4 S</span>
+            <button class="btn-card-collapse-toggle" aria-label="Minimizar ou expandir">▲</button>
+          </div>
+        </div>
+
+        <div class="card-collapsible-wrapper">
+          <div class="card-collapsible-inner">
+            <div class="card-image-wrapper" 
+                 data-human-src="assets/images/elevacao_pelvica_humano.jpg"
+                 data-diagram-src="assets/images/elevacao_pelvica.svg"
+                 data-title="Elevação Pélvica no Chão (Ponte)"
+                 onclick="handleCardImageClick(this)">
+              <span class="card-category-badge cat-glute">Glúteo Máximo &amp; Médio</span>
+              <img src="assets/images/elevacao_pelvica_humano.jpg" alt="Foto real da elevação pélvica no chão" loading="lazy">
+              <div class="image-zoom-hint">🔍 Ampliar</div>
+            </div>
+
+            <!-- Toolbar de Alternância Dedicada (Zero Sobreposição) -->
+            <div class="card-view-toolbar">
+              <div class="view-mode-segmented">
+                <button type="button" class="view-toggle-btn active" data-view="human" onclick="switchCardView(this, 'human')">
+                  <span>👤</span> Pessoa Real
+                </button>
+                <button type="button" class="view-toggle-btn" data-view="diagram" onclick="switchCardView(this, 'diagram')">
+                  <span>📐</span> Biomecânica
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h2 class="card-title">Elevação Pélvica no Chão (Ponte)</h2>
+              <div class="card-focus-target">
+                <span>🎯</span> <strong>Alvo:</strong> Glúteo Máximo e estabilização pélvica
+              </div>
+
+              <div class="prescription-pill-row">
+                <span class="rx-pill">🔁 3 a 4 Séries</span>
+                <span class="rx-pill">🔢 12 a 15 reps</span>
+                <span class="rx-pill">🪢 Opção Miniband</span>
+              </div>
+
+              <div class="sets-tracker-box">
+                <div class="sets-header">
+                  <span>Marcar Séries Concluídas:</span>
+                  <span class="sets-counter-label" id="label-elevacao">0/4</span>
+                </div>
+                <div class="sets-buttons-group" data-exercise="elevacao" data-total-sets="4">
+                  <button class="set-btn" data-set="1">S1</button>
+                  <button class="set-btn" data-set="2">S2</button>
+                  <button class="set-btn" data-set="3">S3</button>
+                  <button class="set-btn" data-set="4">S4</button>
+                </div>
+              </div>
+
+              <div class="instructions-details">
+                <div class="step-item">
+                  <span class="step-label">📍 Posição:</span>
+                  Deitado de costas, joelhos a 90° e pés firmes no chão na largura do quadril.
+                </div>
+                <div class="step-item">
+                  <span class="step-label">⚡ Execução:</span>
+                  Empurre com os calcanhares e eleve o quadril até alinhar joelhos, pelve e ombros. Aperte o glúteo no topo e desça.
+                </div>
+                <div class="clinical-caution-box">
+                  ⚠️ <strong>Cuidado com a Hérnia:</strong> Pare na linha reta! Não empurre a barriga além da conta para não hiperextender a lombar.
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-timer-row">
+                  <button class="btn-card-timer" onclick="startTimer(60, 'Descanso Ponte')">
+                  ⏳ Descanso 60s
+                </button>
+                </div>
+                <button type="button" class="btn-card-close-bottom" onclick="toggleCard(this.closest('.exercise-card'))">
+                  <span>▲</span> Fechar / Minimizar Card
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EXERCÍCIO 5: CLAMSHELL / OSTRA -->
+      <article class="exercise-card" data-category="glute" id="card-clamshell">
+        <div class="card-header-bar" title="Clique para minimizar ou expandir este exercício">
+          <div class="card-header-main">
+            <span class="card-number-badge">5</span>
+            <span class="card-tag-pill cat-tag-glute">Glúteo</span>
+            <span class="card-header-title">Abdução de Quadril (Ostra / Máquina)</span>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-mini-status" id="ministatus-clamshell">0/3 S</span>
+            <button class="btn-card-collapse-toggle" aria-label="Minimizar ou expandir">▲</button>
+          </div>
+        </div>
+
+        <div class="card-collapsible-wrapper">
+          <div class="card-collapsible-inner">
+            <div class="card-image-wrapper" 
+                 data-human-src="assets/images/clamshell_abducao_humano.jpg"
+                 data-diagram-src="assets/images/clamshell_ostra.svg"
+                 data-title="Abdução de Quadril (Ostra / Máquina)"
+                 onclick="handleCardImageClick(this)">
+              <span class="card-category-badge cat-glute">Glúteo Máximo &amp; Médio</span>
+              <img src="assets/images/clamshell_abducao_humano.jpg" alt="Foto real de abdução de quadril na academia" loading="lazy">
+              <div class="image-zoom-hint">🔍 Ampliar</div>
+            </div>
+
+            <div class="card-view-toolbar">
+              <div class="view-mode-segmented">
+                <button type="button" class="view-toggle-btn active" data-view="human" onclick="switchCardView(this, 'human')">
+                  <span>👤</span> Pessoa Real
+                </button>
+                <button type="button" class="view-toggle-btn" data-view="diagram" onclick="switchCardView(this, 'diagram')">
+                  <span>📐</span> Biomecânica
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h2 class="card-title">Abdução de Quadril Deitado (Ostra)</h2>
+              <div class="card-focus-target">
+                <span>🎯</span> <strong>Alvo:</strong> Glúteo Médio (chave para estabilização da bacia)
+              </div>
+
+              <div class="prescription-pill-row">
+                <span class="rx-pill">🔁 3 Séries</span>
+                <span class="rx-pill">🔢 12-15 / lado</span>
+                <span class="rx-pill">🪢 Miniband / Máquina</span>
+              </div>
+
+              <div class="sets-tracker-box">
+                <div class="sets-header">
+                  <span>Marcar Séries Concluídas:</span>
+                  <span class="sets-counter-label" id="label-clamshell">0/3</span>
+                </div>
+                <div class="sets-buttons-group" data-exercise="clamshell" data-total-sets="3">
+                  <button class="set-btn" data-set="1">S1</button>
+                  <button class="set-btn" data-set="2">S2</button>
+                  <button class="set-btn" data-set="3">S3</button>
+                </div>
+              </div>
+
+              <div class="instructions-details">
+                <div class="step-item">
+                  <span class="step-label">📍 Posição:</span>
+                  Deitado de lado com joelhos a 90° e calcanhares colados, ou sentado na Cadeira Abdutora com o tronco firme.
+                </div>
+                <div class="step-item">
+                  <span class="step-label">⚡ Execução:</span>
+                  Abra o joelho de cima o máximo que conseguir sem girar o tronco para trás. Sinta a lateral do glúteo queimar.
+                </div>
+                <div class="clinical-caution-box">
+                  ⚠️ <strong>Cuidado com a Hérnia:</strong> A pelve deve ficar travada. Se a bacia rolar para trás, a lombar é forçada.
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-timer-row">
+                  <button class="btn-card-timer" onclick="startTimer(45, 'Descanso Ostra')">
+                  ⏳ Descanso 45s
+                </button>
+                </div>
+                <button type="button" class="btn-card-close-bottom" onclick="toggleCard(this.closest('.exercise-card'))">
+                  <span>▲</span> Fechar / Minimizar Card
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EXERCÍCIO 6: GLÚTEO 4 APOIOS COM CANELEIRA -->
+      <article class="exercise-card" data-category="glute" id="card-gluteo4">
+        <div class="card-header-bar" title="Clique para minimizar ou expandir este exercício">
+          <div class="card-header-main">
+            <span class="card-number-badge">6</span>
+            <span class="card-tag-pill cat-tag-glute">Glúteo</span>
+            <span class="card-header-title">Glúteo 4 Apoios com Caneleira</span>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-mini-status" id="ministatus-gluteo4">0/3 S</span>
+            <button class="btn-card-collapse-toggle" aria-label="Minimizar ou expandir">▲</button>
+          </div>
+        </div>
+
+        <div class="card-collapsible-wrapper">
+          <div class="card-collapsible-inner">
+            <div class="card-image-wrapper" 
+                 data-human-src="assets/images/gluteo_quatro_apoios_humano.jpg"
+                 data-diagram-src="assets/images/gluteo_quatro_apoios.svg"
+                 data-title="Glúteo 4 Apoios (Extensão de Quadril)"
+                 onclick="handleCardImageClick(this)">
+              <span class="card-category-badge cat-glute">Glúteo Máximo &amp; Médio</span>
+              <img src="assets/images/gluteo_quatro_apoios_humano.jpg" alt="Foto real de glúteo 4 apoios com caneleira" loading="lazy">
+              <div class="image-zoom-hint">🔍 Ampliar</div>
+            </div>
+
+            <div class="card-view-toolbar">
+              <div class="view-mode-segmented">
+                <button type="button" class="view-toggle-btn active" data-view="human" onclick="switchCardView(this, 'human')">
+                  <span>👤</span> Pessoa Real
+                </button>
+                <button type="button" class="view-toggle-btn" data-view="diagram" onclick="switchCardView(this, 'diagram')">
+                  <span>📐</span> Biomecânica
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h2 class="card-title">Glúteo 4 Apoios com Caneleira</h2>
+              <div class="card-focus-target">
+                <span>🎯</span> <strong>Alvo:</strong> Glúteo Máximo e extensão isolada
+              </div>
+
+              <div class="prescription-pill-row">
+                <span class="rx-pill">🔁 3 Séries</span>
+                <span class="rx-pill">🔢 12-15 / lado</span>
+                <span class="rx-pill">⚖️ Caneleira</span>
+              </div>
+
+              <div class="sets-tracker-box">
+                <div class="sets-header">
+                  <span>Marcar Séries Concluídas:</span>
+                  <span class="sets-counter-label" id="label-gluteo4">0/3</span>
+                </div>
+                <div class="sets-buttons-group" data-exercise="gluteo4" data-total-sets="3">
+                  <button class="set-btn" data-set="1">S1</button>
+                  <button class="set-btn" data-set="2">S2</button>
+                  <button class="set-btn" data-set="3">S3</button>
+                </div>
+              </div>
+
+              <div class="instructions-details">
+                <div class="step-item">
+                  <span class="step-label">📍 Posição:</span>
+                  Em 4 apoios no colchonete com caneleira no tornozelo. Abdômen firme e coluna plana.
+                </div>
+                <div class="step-item">
+                  <span class="step-label">⚡ Execução:</span>
+                  Joelho dobrado a 90°, empurre a sola do pé em direção ao teto até a coxa alinhar com o tronco.
+                </div>
+                <div class="clinical-caution-box">
+                  ⚠️ <strong>Cuidado com a Hérnia:</strong> Suba apenas até a linha do tronco! NÃO dê "chutes altos" para não arquear a lombar.
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-timer-row">
+                  <button class="btn-card-timer" onclick="startTimer(45, 'Descanso')">
+                  ⏳ Descanso 45s
+                </button>
+                </div>
+                <button type="button" class="btn-card-close-bottom" onclick="toggleCard(this.closest('.exercise-card'))">
+                  <span>▲</span> Fechar / Minimizar Card
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EXERCÍCIO 7: AGACHAMENTO NO BANCO (BOX SQUAT) -->
+      <article class="exercise-card" data-category="quad" id="card-boxsquat">
+        <div class="card-header-bar" title="Clique para minimizar ou expandir este exercício">
+          <div class="card-header-main">
+            <span class="card-number-badge">7</span>
+            <span class="card-tag-pill cat-tag-quad">Quadríceps</span>
+            <span class="card-header-title">Agachamento no Banco (Box Squat)</span>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-mini-status" id="ministatus-boxsquat">0/3 S</span>
+            <button class="btn-card-collapse-toggle" aria-label="Minimizar ou expandir">▲</button>
+          </div>
+        </div>
+
+        <div class="card-collapsible-wrapper">
+          <div class="card-collapsible-inner">
+            <div class="card-image-wrapper" 
+                 data-human-src="assets/images/box_squat_humano.jpg"
+                 data-diagram-src="assets/images/box_squat_banco.svg"
+                 data-title="Agachamento Senta e Levanta no Banco"
+                 onclick="handleCardImageClick(this)">
+              <span class="card-category-badge cat-quad">Quadríceps &amp; Adutor</span>
+              <img src="assets/images/box_squat_humano.jpg" alt="Foto real de agachamento com braços à frente sem peso nas costas" loading="lazy">
+              <div class="image-zoom-hint">🔍 Ampliar</div>
+            </div>
+
+            <div class="card-view-toolbar">
+              <div class="view-mode-segmented">
+                <button type="button" class="view-toggle-btn active" data-view="human" onclick="switchCardView(this, 'human')">
+                  <span>👤</span> Pessoa Real
+                </button>
+                <button type="button" class="view-toggle-btn" data-view="diagram" onclick="switchCardView(this, 'diagram')">
+                  <span>📐</span> Biomecânica
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h2 class="card-title">Agachamento Senta e Levanta (Banco)</h2>
+              <div class="card-focus-target">
+                <span>🎯</span> <strong>Alvo:</strong> Quadríceps, glúteos e controle funcional
+              </div>
+
+              <div class="prescription-pill-row">
+                <span class="rx-pill">🔁 3 Séries</span>
+                <span class="rx-pill">🔢 10-12 reps</span>
+                <span class="rx-pill">🪑 Banco Seguro</span>
+              </div>
+
+              <div class="sets-tracker-box">
+                <div class="sets-header">
+                  <span>Marcar Séries Concluídas:</span>
+                  <span class="sets-counter-label" id="label-boxsquat">0/3</span>
+                </div>
+                <div class="sets-buttons-group" data-exercise="boxsquat" data-total-sets="3">
+                  <button class="set-btn" data-set="1">S1</button>
+                  <button class="set-btn" data-set="2">S2</button>
+                  <button class="set-btn" data-set="3">S3</button>
+                </div>
+              </div>
+
+              <div class="instructions-details">
+                <div class="step-item">
+                  <span class="step-label">📍 Posição:</span>
+                  Em pé de costas para o banco. Pés na largura dos ombros, braços estendidos à frente para equilíbrio.
+                </div>
+                <div class="step-item">
+                  <span class="step-label">⚡ Execução:</span>
+                  Leve o quadril para trás como quem senta no banco. Ao encostar, suba com as pernas sem pegar impulso.
+                </div>
+                <div class="clinical-caution-box">
+                  ⚠️ <strong>Cuidado com a Hérnia:</strong> Jamais use barra nas costas (Smith ou livre). O banco impede a retroversão da bacia.
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-timer-row">
+                  <button class="btn-card-timer" onclick="startTimer(60, 'Descanso Agachamento')">
+                  ⏳ Descanso 60s
+                </button>
+                </div>
+                <button type="button" class="btn-card-close-bottom" onclick="toggleCard(this.closest('.exercise-card'))">
+                  <span>▲</span> Fechar / Minimizar Card
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EXERCÍCIO 8: CADEIRA EXTENSORA -->
+      <article class="exercise-card" data-category="quad" id="card-extensora">
+        <div class="card-header-bar" title="Clique para minimizar ou expandir este exercício">
+          <div class="card-header-main">
+            <span class="card-number-badge">8</span>
+            <span class="card-tag-pill cat-tag-quad">Quadríceps</span>
+            <span class="card-header-title">Cadeira Extensora</span>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-mini-status" id="ministatus-extensora">0/3 S</span>
+            <button class="btn-card-collapse-toggle" aria-label="Minimizar ou expandir">▲</button>
+          </div>
+        </div>
+
+        <div class="card-collapsible-wrapper">
+          <div class="card-collapsible-inner">
+            <div class="card-image-wrapper" 
+                 data-human-src="assets/images/cadeira_extensora_humano.jpg"
+                 data-diagram-src="assets/images/cadeira_extensora.svg"
+                 data-title="Cadeira Extensora (Apoio Lombar Total)"
+                 onclick="handleCardImageClick(this)">
+              <span class="card-category-badge cat-quad">Quadríceps &amp; Adutor</span>
+              <img src="assets/images/cadeira_extensora_humano.jpg" alt="Foto real de cadeira extensora na academia" loading="lazy">
+              <div class="image-zoom-hint">🔍 Ampliar</div>
+            </div>
+
+            <div class="card-view-toolbar">
+              <div class="view-mode-segmented">
+                <button type="button" class="view-toggle-btn active" data-view="human" onclick="switchCardView(this, 'human')">
+                  <span>👤</span> Pessoa Real
+                </button>
+                <button type="button" class="view-toggle-btn" data-view="diagram" onclick="switchCardView(this, 'diagram')">
+                  <span>📐</span> Biomecânica
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h2 class="card-title">Cadeira Extensora</h2>
+              <div class="card-focus-target">
+                <span>🎯</span> <strong>Alvo:</strong> Quadríceps (isolamento sem sobrecarga lombar)
+              </div>
+
+              <div class="prescription-pill-row">
+                <span class="rx-pill">🔁 3 Séries</span>
+                <span class="rx-pill">🔢 12 a 15 reps</span>
+                <span class="rx-pill">🛡️ Máquina Apoiada</span>
+              </div>
+
+              <div class="sets-tracker-box">
+                <div class="sets-header">
+                  <span>Marcar Séries Concluídas:</span>
+                  <span class="sets-counter-label" id="label-extensora">0/3</span>
+                </div>
+                <div class="sets-buttons-group" data-exercise="extensora" data-total-sets="3">
+                  <button class="set-btn" data-set="1">S1</button>
+                  <button class="set-btn" data-set="2">S2</button>
+                  <button class="set-btn" data-set="3">S3</button>
+                </div>
+              </div>
+
+              <div class="instructions-details">
+                <div class="step-item">
+                  <span class="step-label">📍 Posição:</span>
+                  Sentado na máquina com a coluna e lombar 100% apoiadas no encosto. Segure firme nas manoplas.
+                </div>
+                <div class="step-item">
+                  <span class="step-label">⚡ Execução:</span>
+                  Estenda os joelhos até alinhar as pernas, segure 1 segundo e retorne descendo com controle.
+                </div>
+                <div class="clinical-caution-box">
+                  ⚠️ <strong>Cuidado com a Hérnia:</strong> Segure firme nas manoplas para manter a bacia grudada no assento.
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-timer-row">
+                  <button class="btn-card-timer" onclick="startTimer(60, 'Descanso Extensora')">
+                  ⏳ Descanso 60s
+                </button>
+                </div>
+                <button type="button" class="btn-card-close-bottom" onclick="toggleCard(this.closest('.exercise-card'))">
+                  <span>▲</span> Fechar / Minimizar Card
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EXERCÍCIO 9: ADUÇÃO DE QUADRIL COM BOLA OU MÁQUINA -->
+      <article class="exercise-card" data-category="quad" id="card-aducao">
+        <div class="card-header-bar" title="Clique para minimizar ou expandir este exercício">
+          <div class="card-header-main">
+            <span class="card-number-badge">9</span>
+            <span class="card-tag-pill cat-tag-quad">Adutor</span>
+            <span class="card-header-title">Adução de Quadril (Máquina / Bola)</span>
+          </div>
+          <div class="card-header-actions">
+            <span class="card-mini-status" id="ministatus-aducao">0/3 S</span>
+            <button class="btn-card-collapse-toggle" aria-label="Minimizar ou expandir">▲</button>
+          </div>
+        </div>
+
+        <div class="card-collapsible-wrapper">
+          <div class="card-collapsible-inner">
+            <div class="card-image-wrapper" 
+                 data-human-src="assets/images/aducao_quadril_humano.jpg"
+                 data-diagram-src="assets/images/aducao_quadril_bola.svg"
+                 data-title="Adução de Quadril (Cadeira Adutora / Bola)"
+                 onclick="handleCardImageClick(this)">
+              <span class="card-category-badge cat-quad">Quadríceps &amp; Adutor</span>
+              <img src="assets/images/aducao_quadril_humano.jpg" alt="Foto real de cadeira adutora na academia" loading="lazy">
+              <div class="image-zoom-hint">🔍 Ampliar</div>
+            </div>
+
+            <div class="card-view-toolbar">
+              <div class="view-mode-segmented">
+                <button type="button" class="view-toggle-btn active" data-view="human" onclick="switchCardView(this, 'human')">
+                  <span>👤</span> Pessoa Real
+                </button>
+                <button type="button" class="view-toggle-btn" data-view="diagram" onclick="switchCardView(this, 'diagram')">
+                  <span>📐</span> Biomecânica
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h2 class="card-title">Adução de Quadril (Bola ou Adutora)</h2>
+              <div class="card-focus-target">
+                <span>🎯</span> <strong>Alvo:</strong> Adutores (estabilização e fechamento pélvico)
+              </div>
+
+              <div class="prescription-pill-row">
+                <span class="rx-pill">🔁 3 Séries</span>
+                <span class="rx-pill">🔢 12 a 15 reps</span>
+                <span class="rx-pill">⚽ Bola / Máquina</span>
+              </div>
+
+              <div class="sets-tracker-box">
+                <div class="sets-header">
+                  <span>Marcar Séries Concluídas:</span>
+                  <span class="sets-counter-label" id="label-aducao">0/3</span>
+                </div>
+                <div class="sets-buttons-group" data-exercise="aducao" data-total-sets="3">
+                  <button class="set-btn" data-set="1">S1</button>
+                  <button class="set-btn" data-set="2">S2</button>
+                  <button class="set-btn" data-set="3">S3</button>
+                </div>
+              </div>
+
+              <div class="instructions-details">
+                <div class="step-item">
+                  <span class="step-label">📍 Posição:</span>
+                  Sentado na Cadeira Adutora com as costas coladas no encosto, ou deitado no solo com bola macia entre os joelhos.
+                </div>
+                <div class="step-item">
+                  <span class="step-label">⚡ Execução:</span>
+                  Aperte para dentro com a parte interna das coxas com força por 3 a 5s e relaxe levemente.
+                </div>
+                <div class="clinical-caution-box">
+                  ⚠️ <strong>Cuidado com a Hérnia:</strong> Ao fazer o aperto, não prenda a respiração (evite manobra de Valsalva excessiva).
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-timer-row">
+                  <button class="btn-card-timer" onclick="startTimer(5, 'Aperto Isométrico')">
+                  ⏱️ Timer Aperto 5s
+                </button>
+                <button class="btn-card-timer" onclick="startTimer(45, 'Descanso')">
+                  ⏳ Descanso 45s
+                </button>
+                </div>
+                <button type="button" class="btn-card-close-bottom" onclick="toggleCard(this.closest('.exercise-card'))">
+                  <span>▲</span> Fechar / Minimizar Card
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- ====================================================================
+         SEÇÃO EDUCATIVA DA FISIOTERAPIA
+         ==================================================================== -->
+    <section class="educational-section">
+      <div class="edu-header">
+        <h2>📚 Por que esse protocolo protege sua Hérnia de Disco?</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <h3>🚫 Por que NÃO Smith ou Leg Press?</h3>
+          <p>
+            No <strong>Smith</strong>, a barra está presa em trilho rígido, forçando a coluna a se adaptar à máquina. No <strong>Leg Press</strong>, quando a coxa se aproxima do peito, a pelve sofre retroversão ("bunda sai do banco"), esmagando os discos L4-L5 e S1.
+          </p>
+        </div>
+        <div class="edu-card">
+          <h3>🟣 O Segredo do Glúteo Médio</h3>
+          <p>
+            O <strong>Glúteo Médio</strong> é o principal estabilizador lateral da pelve. Quando ele está fraco, a bacia cai a cada passo, transferindo o choque diretamente para a lombar. Fortalecê-lo é o melhor escudo protetor.
+          </p>
+        </div>
+        <div class="edu-card">
+          <h3>🟢 O Core Sem Flexão Lombar</h3>
+          <p>
+            Abdominais tradicionais geram até 3.300N de compressão nos discos. Por isso, a fisioterapeuta prescreveu <strong>isometrias e anti-rotação (Prancha, Perdigueiro e Pallof)</strong>, criando rigidez protetora com zero compressão nociva.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /app-container -->
+
+  <!-- ====================================================================
+       CRONÔMETRO FLUTUANTE (FLOATING DOCK)
+       ==================================================================== -->
+  <!-- ====================================================================
+       CRONÔMETRO FLUTUANTE (FLOATING DOCK COM MODO MINIMIZADO)
+       ==================================================================== -->
+  <div class="floating-timer-bar" id="floating-timer" aria-live="polite">
+    <div class="timer-display-info">
+      <span class="timer-label" id="timer-status-label">Cronômetro</span>
+      <div class="timer-digits" id="timer-display">00:00</div>
+    </div>
+    <div class="timer-controls">
+      <button class="btn-timer-ctrl btn-timer-play" id="btn-timer-toggle" title="Iniciar ou Pausar Timer">▶</button>
+      <button class="btn-timer-ctrl" id="btn-timer-add15" title="Adicionar 15 segundos">+15s</button>
+      <button class="btn-timer-ctrl" id="btn-timer-reset" title="Zerar Timer">⏹</button>
+    </div>
+    <button class="btn-timer-minimize" id="btn-timer-minimize" title="Minimizar barra do cronômetro">✕</button>
+  </div>
+  <button class="btn-timer-bubble" id="btn-timer-bubble" title="Reabrir Cronômetro" style="display: none;">
+    <span>⏱️</span> <span id="timer-bubble-digits">00:00</span>
+  </button>
+
+  <!-- ====================================================================
+       LIGHTBOX / MODAL PARA ZOOM DAS IMAGENS
+       ==================================================================== -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox()" title="Fechar imagem">✕</button>
+      <img src="" alt="" class="lightbox-img" id="lightbox-img">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
