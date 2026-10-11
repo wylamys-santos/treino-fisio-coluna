@@ -490,12 +490,15 @@ function switchCardView(btn, mode) {
   const img = cardWrapper.querySelector('img');
   if (!img) return;
 
+  const threedSrc = cardWrapper.getAttribute('data-threed-src');
   const humanSrc = cardWrapper.getAttribute('data-human-src');
   const diagramSrc = cardWrapper.getAttribute('data-diagram-src');
 
   img.style.opacity = '0.3';
   setTimeout(() => {
-    if (mode === 'diagram' && diagramSrc) {
+    if (mode === '3d' && threedSrc) {
+      img.src = threedSrc;
+    } else if (mode === 'diagram' && diagramSrc) {
       img.src = diagramSrc;
     } else if (mode === 'human' && humanSrc) {
       img.src = humanSrc;
