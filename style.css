@@ -991,6 +991,86 @@ body.light-theme .rx-pill {
   background: #f1f5f9;
 }
 
+/* Legenda Anatômica da Imagem 3D (PT-BR) */
+.image-anatomy-legend {
+  margin: 0.2rem 0 0.85rem 0;
+  padding: 0.65rem 0.85rem;
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+body.light-theme .image-anatomy-legend {
+  background: #f0fdf4;
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+.anatomy-legend-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-emerald);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.anatomy-legend-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.anatomy-legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.76rem;
+  line-height: 1.35;
+  color: var(--text-secondary);
+}
+
+body.light-theme .anatomy-legend-item {
+  color: #334155;
+}
+
+.legend-color-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.dot-emerald {
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+}
+
+.dot-amber {
+  background: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+}
+
+.dot-cyan {
+  background: #06b6d4;
+  box-shadow: 0 0 6px rgba(6, 182, 212, 0.6);
+}
+
+.dot-shield {
+  background: #a855f7;
+  box-shadow: 0 0 6px rgba(168, 85, 247, 0.6);
+}
+
+.anatomy-legend-item strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
 /* Sets Tracker */
 .sets-tracker-box {
   background: rgba(0, 0, 0, 0.18);
